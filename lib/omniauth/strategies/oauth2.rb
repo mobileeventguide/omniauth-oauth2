@@ -35,7 +35,8 @@ module OmniAuth
       end
 
       def callback_url
-        full_host + script_name + callback_path
+        url = full_host + script_name + callback_path
+        url.gsub('https', 'http')
       end
 
       credentials do
