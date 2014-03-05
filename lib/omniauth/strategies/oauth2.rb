@@ -36,7 +36,9 @@ module OmniAuth
 
       def callback_url
         url = full_host + script_name + callback_path
+        ### IMPORTANT: needed to do this to ensure that linkedin and facebook still work in seroki
         url.gsub('https', 'http')
+        ### /Important
       end
 
       credentials do
