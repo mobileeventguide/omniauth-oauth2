@@ -1,3 +1,22 @@
+# MEG EDIT
+
+we modified the 'callback_url' method in the file:
+
+```bash
+./lib/omniauth/strategies/oauth2.rb
+```
+
+to look like this:
+
+```ruby
+      def callback_url
+        url = full_host + script_name + callback_path
+        ### IMPORTANT: needed to do this to ensure that linkedin and facebook still work in seroki
+        url.gsub('https', 'http')
+        ### /Important
+      end
+```
+
 # OmniAuth OAuth2
 
 [![Gem Version](http://img.shields.io/gem/v/omniauth-oauth2.svg)][gem]
